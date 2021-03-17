@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if title %}
+    <title>ToDo - {{ title }}</title>
+  {% else %}
+    <title>ToDo</title>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <main>
+        <div class="jumbotron-fluid m-0 b bg-dark p-3 ">
+            <div class="container-fluid display-4 text-center text-white">Miejsce na Twoje zadania</div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">ToDo</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+
+              {% if user.is_autenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL6" data-toggle="dropdown" aria-expanded="false">{{user.username}}</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown07XL6">
+                        <a class="dropdown-item" href="#"><span class="fas fa-user-alt"></span>Profil</a>
+                        <a class="dropdown-item" href="#">Nowa lista</a>
+                        <a class="dropdown-item" href="#">Edytuj profil</a>
+                        <a class="dropdown-item" href="#"><span class="fas fa-sign-out-alt"></span>Wyloguj<</a>
+                      </div>
+                    </li>
+                </ul>
+            {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#"><span class="fas fa-sign-in-alt"></span> Zaloguj</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#"><span class="fas fa-marker"></span> Zarejestruj</a>
+                </li>
+              </ul>
+
+            {% endif %}
+
+            </div>
+        </nav>
+
+    {% block content %}{% endblock %}
+
+      <footer class="page-footer">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center bg-dark p-2 fixed-bottom">
+          <p class="m-0 text-white">&copy; 2020 Copyright TworQ</p>
+        </div>
+        <!-- Copyright -->
+
+      </footer>
+    </main>
+</body>
+</html>
